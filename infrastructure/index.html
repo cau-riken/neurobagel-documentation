@@ -1,0 +1,2177 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../cli/">
+      
+      
+        <link rel="next" href="../updating_dataset/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.3">
+    
+    
+      
+        <title>Setting up a graph - Neurobagel</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.79e020e9.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a5377069.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sysadmin" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Neurobagel" class="md-header__button md-logo" aria-label="Neurobagel" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Neurobagel
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Setting up a graph
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/neurobagel/documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Welcome
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../overview/" class="md-tabs__link">
+          
+  
+    
+  
+  User guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../dictionaries/" class="md-tabs__link">
+          
+  
+    
+  
+  Data models
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../nipoppy/overview/" class="md-tabs__link">
+          
+  
+    
+  
+  Preparing data using Nipoppy
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../contributing/pull_requests/" class="md-tabs__link">
+          
+  
+    
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../getting_help/" class="md-tabs__link">
+        
+  
+    
+  
+  Getting help
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../cite/" class="md-tabs__link">
+        
+  
+    
+  
+  Citing Neurobagel
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Neurobagel" class="md-nav__button md-logo" aria-label="Neurobagel" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Neurobagel
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/neurobagel/documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    User guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            User guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_prep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Preparing data for annotation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annotation_tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotating a dataset
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generating harmonized subject-level metadata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Setting up a graph
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Setting up a graph
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#get-a-license-for-the-graph-backend" class="md-nav__link">
+    Get a license for the graph backend
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-the-api-and-graph-stack" class="md-nav__link">
+    Launch the API and graph stack
+  </a>
+  
+    <nav class="md-nav" aria-label="Launch the API and graph stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone-the-api-repo" class="md-nav__link">
+    Clone the API repo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-the-environment-variables" class="md-nav__link">
+    Set the environment variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-note-on-using-a-graphical-query-tool-to-send-api-requests" class="md-nav__link">
+    A note on using a graphical query tool to send API requests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-compose" class="md-nav__link">
+    Docker Compose
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-for-the-first-run" class="md-nav__link">
+    Setup for the first run
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup for the first run">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change-the-database-admin-password" class="md-nav__link">
+    Change the database admin password
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-database-user" class="md-nav__link">
+    Create a new database user
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-new-database" class="md-nav__link">
+    Create new database
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uploading-data-to-the-graph" class="md-nav__link">
+    Uploading data to the graph
+  </a>
+  
+    <nav class="md-nav" aria-label="Uploading data to the graph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uploading-example-neurobagel-data" class="md-nav__link">
+    Uploading example Neurobagel data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-a-dataset-in-the-graph-database" class="md-nav__link">
+    Updating a dataset in the graph database
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-store-neurobagel-graph-ready-data" class="md-nav__link">
+    Where to store Neurobagel graph-ready data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-the-new-deployment" class="md-nav__link">
+    Test the new deployment
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../updating_dataset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Updating a harmonized dataset
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using the API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../query_tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running cohort queries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Data models
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Data models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dictionaries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Augmented BIDS data dictionaries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph_data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data files for Neurobagel graphs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../term_naming_standards/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Naming conventions for terms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Preparing data using Nipoppy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Preparing data using Nipoppy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nipoppy/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nipoppy/installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nipoppy/configs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nipoppy/code_org/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code organization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nipoppy/data_org/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data organization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Workflow
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Workflow
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nipoppy/workflow/dicom_org/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DICOM organization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nipoppy/workflow/bids_conv/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BIDS conversion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6_3" id="__nav_4_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Pipeline specific instructions
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Pipeline specific instructions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nipoppy/workflow/proc_pipe/fmriprep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    fmriprep
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nipoppy/workflow/proc_pipe/mriqc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    mriqc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/pull_requests/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pull requests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/team/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Our team
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_help/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting help
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Citing Neurobagel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#get-a-license-for-the-graph-backend" class="md-nav__link">
+    Get a license for the graph backend
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-the-api-and-graph-stack" class="md-nav__link">
+    Launch the API and graph stack
+  </a>
+  
+    <nav class="md-nav" aria-label="Launch the API and graph stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone-the-api-repo" class="md-nav__link">
+    Clone the API repo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-the-environment-variables" class="md-nav__link">
+    Set the environment variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-note-on-using-a-graphical-query-tool-to-send-api-requests" class="md-nav__link">
+    A note on using a graphical query tool to send API requests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-compose" class="md-nav__link">
+    Docker Compose
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-for-the-first-run" class="md-nav__link">
+    Setup for the first run
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup for the first run">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change-the-database-admin-password" class="md-nav__link">
+    Change the database admin password
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-database-user" class="md-nav__link">
+    Create a new database user
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-new-database" class="md-nav__link">
+    Create new database
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uploading-data-to-the-graph" class="md-nav__link">
+    Uploading data to the graph
+  </a>
+  
+    <nav class="md-nav" aria-label="Uploading data to the graph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uploading-example-neurobagel-data" class="md-nav__link">
+    Uploading example Neurobagel data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-a-dataset-in-the-graph-database" class="md-nav__link">
+    Updating a dataset in the graph database
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-store-neurobagel-graph-ready-data" class="md-nav__link">
+    Where to store Neurobagel graph-ready data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-the-new-deployment" class="md-nav__link">
+    Test the new deployment
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="sysadmin">SysAdmin</h1>
+<p>These instructions are for a sysadmin looking to deploy Neurobagel locally in an institute or lab. 
+A local neurobagel deployment includes the neurobagel API, 
+a graph backend to store the harmonized metadata, 
+and optionally a locally hosted graphical query interface.</p>
+<p><img alt="The neurobagel API and graph backend" src="../imgs/nb_architecture.jpg" /></p>
+<p>Neurobagel uses RDF-triple stores as graph backends.
+Because RDF is an W3C open standard, 
+any RDF store can be theoretically used as a backend.
+We have tested the following options:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Stardog</label><label for="__tabbed_1_2">graphDB</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><a href="https://www.stardog.com/">Stardog</a> 
+is a very performant RDF store
+with a large number of extensions. However, it has
+a very restrictive license. We therefore do not recommend
+Stardog for most deployments or testing.</p>
+</div>
+<div class="tabbed-block">
+<p><a href="https://graphdb.ontotext.com/">graphDB</a> 
+offers a perpetual free license that should be sufficient
+for many smaller deployments or testing deployments. </p>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>RDF stores are relatively niche applications for very large data applications,
+so most implementations are commercial.</p>
+</div>
+<h2 id="get-a-license-for-the-graph-backend">Get a license for the graph backend</h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Stardog</label><label for="__tabbed_2_2">graphDB</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Stardog has a free, annually renewable license for academic use.
+In order to make a separate deployment of Neurobagel, 
+you should therefore first request your own Stardog license.
+You can request a Stardog license here:</p>
+<p><a href="https://www.stardog.com/license-request/">https://www.stardog.com/license-request/</a></p>
+<div class="admonition danger">
+<p class="admonition-title">Don't pick the wrong license</p>
+<p>Stardog is a company that offers their graph store solutions both as a self-hosted,
+downloadable tool (what we want) and as a cloud hosted subscription model (what we do not want). Both tiers offer free access and the website has a tendency to steer
+you towards the cloud offering. Make sure you request a <strong>license key</strong> for Stardog.</p>
+</div>
+<p><img alt="This is what requesting the license would look like" src="../imgs/stardog_request.png" /></p>
+<p>The Stardog license is typically automatically granted via email in 24 hours. </p>
+<p>The license you receive will be a downloadable file. 
+It is valid for one year and for a major version of Stardog.
+You will need to download the license in a place that is accessible
+to your new Stardog instance when it is launched (see below).</p>
+</div>
+<div class="tabbed-block">
+<p><a href="https://graphdb.ontotext.com/">graphDB</a> creates a free
+perpetual license automatically when you don't explicitly
+provide a license.
+The free edition mostly offers the same features 
+<a href="https://www.ontotext.com/products/graphdb/#comparison-table">as the paid versions</a>, 
+but restricts the number of concurrent operations
+on the graph to 2. </p>
+<p>We recommend using graphDB if these restrictions are not a blocker.</p>
+</div>
+</div>
+</div>
+<h2 id="launch-the-api-and-graph-stack">Launch the API and graph stack</h2>
+<p>We recommend launching the API and your graph backend instance using <code>docker compose</code>.
+The below steps are distilled from <a href="https://github.com/neurobagel/api/blob/main/README.md#local-installation">these instructions</a>.</p>
+<h3 id="clone-the-api-repo">Clone the API repo</h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/neurobagel/api.git
+</code></pre></div>
+<h3 id="set-the-environment-variables">Set the environment variables</h3>
+<p>Create a <code>.env</code> file in the root of the repository to house the environment variables used by the API-graph network.</p>
+<p>The <code>neurobagel/api</code> repo contains a <a href="https://github.com/neurobagel/api/blob/main/.template-env"><code>.template-env</code></a> to get you started. Copy and rename this file to <code>.env</code> and then edit it as needed.</p>
+<p>Below are all the possible Neurobagel environment variables that can be set in <code>.env</code>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Environment variable</th>
+<th style="text-align: left;">Required in .env?</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Default value if not set</th>
+<th style="text-align: left;">Relevant installation mode(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>NB_GRAPH_USERNAME</code></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Username to access Stardog graph database that API will communicate with</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">Docker, Python</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NB_GRAPH_PASSWORD</code></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Password to access Stardog graph database that API will communicate with</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">Docker, Python</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NB_GRAPH_ADDRESS</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">IP address for the graph database (or container name, if graph is hosted locally)</td>
+<td style="text-align: left;"><code>206.12.99.17 (graph)</code> **</td>
+<td style="text-align: left;">Docker, Python</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NB_GRAPH_DB</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Name of graph database endpoint to query (e.g., for a Stardog database, this will take the format of <code>{database_name}/query</code>)</td>
+<td style="text-align: left;"><code>test_data/query</code></td>
+<td style="text-align: left;">Docker, Python</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NB_RETURN_AGG</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Whether to return only dataset-level query results (including data locations) and exclude subject-level attributes. One of [true, false]</td>
+<td style="text-align: left;"><code>true</code></td>
+<td style="text-align: left;">Docker, Python</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NB_API_TAG</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Docker image tag for the API</td>
+<td style="text-align: left;"><code>latest</code></td>
+<td style="text-align: left;">Docker</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NB_API_PORT_HOST</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Port number on the <em>host machine</em> to map the API container port to</td>
+<td style="text-align: left;"><code>8000</code></td>
+<td style="text-align: left;">Docker</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NB_API_PORT</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Port number on which to run the API</td>
+<td style="text-align: left;"><code>8000</code></td>
+<td style="text-align: left;">Docker, Python</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NB_API_ALLOWED_ORIGINS</code></td>
+<td style="text-align: left;">Yes, if using a frontend query tool ‡</td>
+<td style="text-align: left;">Origins allowed to make cross-origin resource sharing requests. Multiple origins must be separated with spaces in a single string enclosed in quotes. See ‡ for more info</td>
+<td style="text-align: left;"><code>""</code></td>
+<td style="text-align: left;">Docker, Python</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NB_GRAPH_IMG</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Graph server Docker image</td>
+<td style="text-align: left;"><code>stardog/stardog:8.2.2-java11-preview</code></td>
+<td style="text-align: left;">Docker</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NB_GRAPH_ROOT_HOST</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Path to directory containing a Stardog license file on the <em>host machine</em></td>
+<td style="text-align: left;"><code>~/stardog-home</code></td>
+<td style="text-align: left;">Docker</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NB_GRAPH_ROOT_CONT</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Path to directory for graph databases in the <em>graph server container</em></td>
+<td style="text-align: left;"><code>/var/opt/stardog</code> *</td>
+<td style="text-align: left;">Docker</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NB_GRAPH_PORT_HOST</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Port number on the <em>host machine</em> to map the graph server container port to</td>
+<td style="text-align: left;"><code>5820</code></td>
+<td style="text-align: left;">Docker, Python</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NB_GRAPH_PORT</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Port number used by the <em>graph server container</em></td>
+<td style="text-align: left;"><code>5820</code> *</td>
+<td style="text-align: left;">Docker</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NB_QUERY_TAG</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Docker image tag for the query tool</td>
+<td style="text-align: left;"><code>latest</code></td>
+<td style="text-align: left;">Docker</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NB_QUERY_PORT_HOST</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Port number used by the <code>query_tool</code> on the host machine</td>
+<td style="text-align: left;"><code>3000</code></td>
+<td style="text-align: left;">Docker</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>API_QUERY_URL</code></td>
+<td style="text-align: left;">Yes, unless default is correct</td>
+<td style="text-align: left;">URL of the API that the query tool will send its requests to. The port number in the URL <strong>must</strong> correspond to <code>NB_API_PORT_HOST</code>. See also the <a href="https://github.com/neurobagel/query-tool?tab=readme-ov-file#set-the-environment-variables">query tool README</a>. <strong>Must</strong> end in a forward slash <code>/</code>!</td>
+<td style="text-align: left;"><code>http://localhost:8000/</code></td>
+<td style="text-align: left;">Docker</td>
+</tr>
+</tbody>
+</table>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Stardog</label><label for="__tabbed_3_2">graphDB</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><em>* These defaults are configured for a Stardog backend - you should not have to change them if you are running a Stardog backend.</em></p>
+<div class="admonition note">
+<p class="admonition-title">Your Stardog license file must be in the right directory</p>
+<p>Note that your Stardog license file must be in the directory specified by <code>NB_GRAPH_ROOT_HOST</code> (default <code>~/stardog-home</code>).</p>
+</div>
+</div>
+<div class="tabbed-block">
+<p><em>* These values will have to be changed for your deployment from their default value:</em></p>
+<div class="admonition warning">
+<p class="admonition-title">Change the following default values in your .env file for a graphDB deployment!</p>
+<div class="highlight"><pre><span></span><code><span class="nv">NB_GRAPH_IMG</span><span class="o">=</span>ontotext/graphdb:10.3.1
+<span class="nv">NB_GRAPH_ROOT_CONT</span><span class="o">=</span>/opt/graphdb/home
+<span class="nv">NB_GRAPH_PORT</span><span class="o">=</span><span class="m">7200</span>
+<span class="nv">NB_GRAPH_PORT_HOST</span><span class="o">=</span><span class="m">7200</span>
+<span class="nv">NB_GRAPH_DB</span><span class="o">=</span>repositories/my_db<span class="w">  </span><span class="c1"># NOTE: for graphDB, this value should always take the the format of: repositories/&lt;your_database_name&gt;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<p><em>** <code>NB_GRAPH_ADDRESS</code> should not be changed from its default value (<code>graph</code>) when using docker compose as this corresponds to the preset container name of the graph database server within the docker compose network.</em></p>
+<p><em>&Dagger; See section <a href="#a-note-on-using-a-graphical-query-tool-to-send-api-requests">Using a graphical query tool to send API requests</a></em></p>
+<p>For a local deployment, we recommend to <strong>explicitly set</strong> at least the following variables in <code>.env</code>
+(note that <code>NB_GRAPH_USERNAME</code> and <code>NB_GRAPH_PASSWORD</code> must always be set):</p>
+<blockquote>
+<p><code>NB_GRAPH_USERNAME</code><br />
+<code>NB_GRAPH_PASSWORD</code><br />
+<code>NB_GRAPH_DB</code><br />
+<code>NB_GRAPH_IMG</code><br />
+<code>NB_RETURN_AGG</code><br />
+<code>NB_API_ALLOWED_ORIGINS</code></p>
+</blockquote>
+<details class="warning">
+<summary>Ensure that shell variables do not clash with <code>.env</code> file</summary>
+<p>If the shell you run <code>docker compose</code> from already has any 
+shell variable of the same name set, 
+the shell variable will take precedence over the configuration
+of <code>.env</code>!
+In this case, make sure to <code>unset</code> the local variable first.</p>
+<p>For more information, see <a href="https://docs.docker.com/compose/environment-variables/envvars-precedence/">Docker's environment variable precedence</a>.</p>
+</details>
+<h3 id="a-note-on-using-a-graphical-query-tool-to-send-api-requests">A note on using a graphical query tool to send API requests</h3>
+<p>The <code>NB_API_ALLOWED_ORIGINS</code> variable defaults to an empty string (<code>""</code>) when unset, meaning that your deployed API will only be accessible via direct <code>curl</code> requests to the URL where the API is hosted (see <a href="#test-the-new-deployment">this section</a> for an example <code>curl</code> request).</p>
+<p>However, in many cases you may want to make the API accessible by a frontend tool such as our <a href="https://github.com/neurobagel/query-tool">browser query tool</a>.
+To do so, you must explicitly specify the origin(s) for the frontend using <code>NB_API_ALLOWED_ORIGINS</code> in <code>.env</code>. </p>
+<p>For example, the <a href="https://github.com/neurobagel/api/blob/main/.template-env"><code>.template-env</code></a> file in the Neurobagel API repo assumes you want to allow API requests from a query tool hosted at a specific port on <code>localhost</code> (see the <a href="#docker-compose">Docker Compose section</a>).</p>
+<p>Other examples:
+<div class="highlight"><pre><span></span><code><span class="c1"># ---- .env file ----</span>
+
+<span class="c1"># do not allow requests from any frontend origins</span>
+<span class="nv">NB_API_ALLOWED_ORIGINS</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="w">  </span><span class="c1"># this is the default value that will also be set if the variable is excluded from the .env file</span>
+
+<span class="c1"># allow requests from only one origin</span>
+<span class="nv">NB_API_ALLOWED_ORIGINS</span><span class="o">=</span><span class="s2">&quot;https://query.neurobagel.org&quot;</span>
+
+<span class="c1"># allow requests from 3 different origins</span>
+<span class="nv">NB_API_ALLOWED_ORIGINS</span><span class="o">=</span><span class="s2">&quot;https://query.neurobagel.org https://localhost:3000 http://localhost:3000&quot;</span>
+
+<span class="c1"># allow requests from any origin - use with caution</span>
+<span class="nv">NB_API_ALLOWED_ORIGINS</span><span class="o">=</span><span class="s2">&quot;*&quot;</span>
+</code></pre></div></p>
+<p><strong>A note for more technical users:</strong> If you have configured an NGINX reverse proxy (or proxy requests to the remote origin) to serve both the API and the query tool from the same origin, you can skip the step of enabling CORS for the API. 
+For an example, see https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/.</p>
+<h3 id="docker-compose">Docker Compose</h3>
+<p>To spin up the API and graph backend containers using Docker Compose, 
+ensure that both <a href="https://docs.docker.com/get-docker/">docker</a> and <a href="https://docs.docker.com/compose/install/">docker compose</a> are installed.</p>
+<p>Run the following in the repository root (where the <code>docker-compose.yml</code> file is) to launch the containers:</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Double check that any environment variables you have customized in <code>.env</code> are resolved with your expected values using the command <code>docker compose config</code>.</p>
+</div>
+<p><div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+Or, if you want to ensure you always pull the latest Docker images first:
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>pull<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div></p>
+<p>By default, this will also deploy a local version of the <a href="https://github.com/neurobagel/query-tool">Neurobagel graphical query tool</a>.
+If using the default port mappings, you can reach your local query tool at <a href="http://localhost:3000">http://localhost:3000</a> once it is running.</p>
+<h2 id="setup-for-the-first-run">Setup for the first run</h2>
+<p>When you launch the graph backend for the first time,
+there are a couple of setup steps that need to be done. 
+These will not have to be repeated for subsequent starts.</p>
+<p>To interact with your graph backend, 
+you have two general options:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Stardog</label><label for="__tabbed_4_2">graphDB</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Send HTTP request against the HTTP API of the Stardog graph instance (e.g. with <code>curl</code>). See <a href="https://stardog-union.github.io/http-docs/">https://stardog-union.github.io/http-docs/</a> for a full reference of API endpoints</li>
+<li>Use the free Stardog-Studio web app. See the <a href="https://docs.stardog.com/stardog-applications/dockerized_access#stardog-studio">Stardog documentation</a> for instruction to deploy Stardog-Studio as a Docker container.</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Stardog-Studio is the most accessible way 
+of manually interacting with a Stardog instance. 
+Here we will focus instead on using the HTTP API for configuration,
+as this allows programmatic access.
+All of these steps can also be achieved via Stardog-Studio manually.
+Please refer to the 
+<a href="https://docs.stardog.com/stardog-applications/studio/">official docs</a> to learn how.</p>
+</div>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>Send HTTP requests against the HTTP API of the graphDB backend 
+e.g. using <code>curl</code>. graphDB uses the <a href="https://rdf4j.org/documentation/reference/rest-api/">RDF4J API</a> specification.</li>
+<li>Use the graphDB web interface (called <a href="https://graphdb.ontotext.com/documentation/10.0/architecture-components.html">the workbench</a>). 
+Once your local graphDB backend is running
+you can connect to it at <a href="http://localhost:8000">http://localhost:8000</a></li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Using the graphDB workbench is a more accessible way to manage the graphDB endpoint.
+The workbench is well documented on the graphDB website.
+Here we will focus instead on setting up graphDB with API calls, 
+that can be automated.</p>
+</div>
+</div>
+</div>
+</div>
+<h3 id="change-the-database-admin-password">Change the database admin password</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Stardog</label><label for="__tabbed_5_2">graphDB</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>When you first launch Stardog, 
+a default <code>admin</code> user with superuser privilege
+will automatically be created for you.
+This <code>admin</code> user is meant to create other database users and modify their permissions.
+Do not use <code>admin</code> for read and write operations, instead use a <a href="#create-a-new-database-user">regular database user</a>.</p>
+<p>You should first change the password of the database <code>admin</code>:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-i<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;admin:admin&quot;</span><span class="w"> </span>http://localhost:5820/admin/users/admin/pwd<span class="w"> </span><span class="se">\</span>
+--data<span class="w"> </span><span class="s1">&#39;{&quot;password&quot;: &quot;NewAdminPassword&quot;}&#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>When the API, graph, and query tool have been started and are running for the first time, you will have to do some first-run configuration.</p>
+<p><strong>Setup security and users</strong></p>
+<p>Also refer to the <a href="https://graphdb.ontotext.com/documentation/10.0/devhub/rest-api/curl-commands.html#security-management">official graphDB documentation</a>.</p>
+<p>First, change the password for the admin user that has been automatically
+created by graphDB:</p>
+<p><div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>PATCH<span class="w"> </span>--header<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span>http://localhost:7200/rest/security/users/admin<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;</span>
+<span class="s1">{&quot;password&quot;: &quot;NewAdminPassword&quot;}&#39;</span>
+</code></pre></div>
+make sure to replace <code>"NewAdminPassword"</code> with your own, secure password.</p>
+<p>Next, enable graphDB security to only allow authenticated users access:
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>--header<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span>-d<span class="w"> </span><span class="nb">true</span><span class="w"> </span>http://localhost:7200/rest/security
+</code></pre></div></p>
+<p>and confirm that this was successful:
+<div class="highlight"><pre><span></span><code>➜<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:7200/rest/security<span class="w">                                                  </span>
+Unauthorized<span class="w"> </span><span class="o">(</span>HTTP<span class="w"> </span>status<span class="w"> </span><span class="m">401</span><span class="o">)</span>
+</code></pre></div></p>
+</div>
+</div>
+</div>
+<h3 id="create-a-new-database-user">Create a new database user</h3>
+<p>The <code>.env</code> file created as part of the <code>docker compose</code> setup instructions
+declares the <code>NB_GRAPH_USERNAME</code> and <code>NB_GRAPH_PASSWORD</code> for the database user.
+The API will send requests to the graph using these credentials.
+When you launch Stardog for the first time, 
+we have to create a new database user:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Stardog</label><label for="__tabbed_6_2">graphDB</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-i<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;admin:NewAdminPassword&quot;</span><span class="w"> </span>http://localhost:5820/admin/users<span class="w"> </span><span class="se">\</span>
+-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+--data<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">    &quot;username&quot;: &quot;DBUSER&quot;,</span>
+<span class="s1">    &quot;password&quot;: [</span>
+<span class="s1">        &quot;DBPASSWORD&quot;</span>
+<span class="s1">    ]</span>
+<span class="s1">}&#39;</span>
+</code></pre></div>
+<p>Confirm that the new user exists:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;admin:NewAdminPassword&quot;</span><span class="w"> </span>http://localhost:5820/admin/users
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>--header<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;admin:NewAdminPassword&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;</span>
+<span class="s1">{</span>
+<span class="s1">&quot;username&quot;: &quot;DBUSER&quot;,</span>
+<span class="s1">&quot;password&quot;: &quot;DBPASSWORD&quot;</span>
+<span class="s1">}&#39;</span><span class="w"> </span>http://localhost:7200/rest/security/users/DBUSER
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure to use the exact <code>NB_GRAPH_USERNAME</code> and <code>NB_GRAPH_PASSWORD</code> you
+defined in the <code>.env</code> file when creating the new database user.
+Otherwise the API will not have the correct permission
+to query the graph.</p>
+</div>
+<h3 id="create-new-database">Create new database</h3>
+<p>When you first launch graph store,
+there are no graph databases.
+You have to create a new one to store
+your metadata.</p>
+<p>If you have defined a custom <code>NB_GRAPH_DB</code> name in the <code>.env</code> file,
+make sure to create a database with a matching name.
+By default the API will query a graph database
+with a name of <code>test_data</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Stardog</label><label for="__tabbed_7_2">graphDB</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-i<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;admin:NewAdminPassword&quot;</span><span class="w"> </span>http://localhost:5820/admin/databases<span class="w"> </span><span class="se">\</span>
+--form<span class="w"> </span><span class="s1">&#39;root=&quot;{\&quot;dbname\&quot;:\&quot;test_data\&quot;}&quot;&#39;</span>
+</code></pre></div>
+<p>Now we need to give our new database user read and write permission for 
+this database:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-i<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;admin:NewAdminPassword&quot;</span><span class="w"> </span>http://localhost:5820/admin/permissions/user/DBUSER<span class="w"> </span><span class="se">\</span>
+-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+--data<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">    &quot;action&quot;: &quot;ALL&quot;,</span>
+<span class="s1">    &quot;resource_type&quot;: &quot;DB&quot;,</span>
+<span class="s1">    &quot;resource&quot;: [</span>
+<span class="s1">        &quot;test_data&quot;</span>
+<span class="s1">    ]</span>
+<span class="s1">}&#39;</span>
+</code></pre></div>
+<details class="note">
+<summary>Finer permission control is also possible</summary>
+<p>For simplicity's sake, here we give <code>"ALL"</code> permission to the new database user.
+The Stardog API provide more fine grained permission control.
+See <a href="https://stardog-union.github.io/http-docs/#tag/Permissions/operation/addUserPermission">the official API documentation</a>.</p>
+</details>
+</div>
+<div class="tabbed-block">
+<p>In graphDB, graph databases are called resources.
+To create a new one, you will also have to prepare a <code>data-config.ttl</code> file
+that contains the settings for the resource you will create (<a href="https://graphdb.ontotext.com/documentation/10.0/devhub/rest-api/location-and-repository-tutorial.html#create-a-repository">see the graphDB docs</a>).</p>
+<p><strong>make sure to that the value for <code>rep:repositoryID</code>
+in the <code>data-configl.ttl</code> file matches the value of
+<code>NB_GRAPH_DB</code> in your <code>.env</code> file</strong>. 
+For example, if <code>NB_GRAPH_DB=my_db</code>, then
+<code>rep:repositoryID "my_db" ;</code>.</p>
+<p>You can use this example file and save
+it as <code>data-config.ttl</code> locally:</p>
+<div class="highlight"><pre><span></span><code><span class="err">#</span>
+<span class="c"># RDF4J configuration template for a GraphDB repository</span>
+<span class="err">#</span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">rdfs:</span><span class="w"> </span><span class="nv">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span><span class="p">.</span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">rep:</span><span class="w"> </span><span class="nv">&lt;http://www.openrdf.org/config/repository#&gt;</span><span class="p">.</span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">sr:</span><span class="w"> </span><span class="nv">&lt;http://www.openrdf.org/config/repository/sail#&gt;</span><span class="p">.</span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">sail:</span><span class="w"> </span><span class="nv">&lt;http://www.openrdf.org/config/sail#&gt;</span><span class="p">.</span>
+<span class="k">@prefix</span><span class="w"> </span><span class="nn">graphdb:</span><span class="w"> </span><span class="nv">&lt;http://www.ontotext.com/config/graphdb#&gt;</span><span class="p">.</span>
+
+<span class="p">[]</span> <span class="kt">a</span> <span class="nn">rep</span><span class="p">:</span><span class="nt">Repository</span> <span class="p">;</span>
+    <span class="nn">rep</span><span class="p">:</span><span class="nt">repositoryID</span> <span class="s">&quot;my_db&quot;</span> <span class="p">;</span>
+    <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="s">&quot;&quot;</span> <span class="p">;</span>
+    <span class="nn">rep</span><span class="p">:</span><span class="nt">repositoryImpl</span> <span class="p">[</span>
+        <span class="nn">rep</span><span class="p">:</span><span class="nt">repositoryType</span> <span class="s">&quot;graphdb:SailRepository&quot;</span> <span class="p">;</span>
+        <span class="nn">sr</span><span class="p">:</span><span class="nt">sailImpl</span> <span class="p">[</span>
+            <span class="nn">sail</span><span class="p">:</span><span class="nt">sailType</span> <span class="s">&quot;graphdb:Sail&quot;</span> <span class="p">;</span>
+
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">read-only</span> <span class="s">&quot;false&quot;</span> <span class="p">;</span>
+
+            <span class="c"># Inference and Validation</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">ruleset</span> <span class="s">&quot;rdfsplus-optimized&quot;</span> <span class="p">;</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">disable-sameAs</span> <span class="s">&quot;true&quot;</span> <span class="p">;</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">check-for-inconsistencies</span> <span class="s">&quot;false&quot;</span> <span class="p">;</span>
+
+            <span class="c"># Indexing</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">entity-id-size</span> <span class="s">&quot;32&quot;</span> <span class="p">;</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">enable-context-index</span> <span class="s">&quot;false&quot;</span> <span class="p">;</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">enablePredicateList</span> <span class="s">&quot;true&quot;</span> <span class="p">;</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">enable-fts-index</span> <span class="s">&quot;false&quot;</span> <span class="p">;</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">fts-indexes</span> <span class="p">(</span><span class="s">&quot;default&quot;</span> <span class="s">&quot;iri&quot;</span><span class="p">)</span> <span class="p">;</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">fts-string-literals-index</span> <span class="s">&quot;default&quot;</span> <span class="p">;</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">fts-iris-index</span> <span class="s">&quot;none&quot;</span> <span class="p">;</span>
+
+            <span class="c"># Queries and Updates</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">query-timeout</span> <span class="s">&quot;0&quot;</span> <span class="p">;</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">throw-QueryEvaluationException-on-timeout</span> <span class="s">&quot;false&quot;</span> <span class="p">;</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">query-limit-results</span> <span class="s">&quot;0&quot;</span> <span class="p">;</span>
+
+            <span class="c"># Settable in the file but otherwise hidden in the UI and in the RDF4J console</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">base-URL</span> <span class="s">&quot;http://example.org/owlim#&quot;</span> <span class="p">;</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">defaultNS</span> <span class="s">&quot;&quot;</span> <span class="p">;</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">imports</span> <span class="s">&quot;&quot;</span> <span class="p">;</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">repository-type</span> <span class="s">&quot;file-repository&quot;</span> <span class="p">;</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">storage-folder</span> <span class="s">&quot;storage&quot;</span> <span class="p">;</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">entity-index-size</span> <span class="s">&quot;10000000&quot;</span> <span class="p">;</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">in-memory-literal-properties</span> <span class="s">&quot;true&quot;</span> <span class="p">;</span>
+            <span class="nn">graphdb</span><span class="p">:</span><span class="nt">enable-literal-index</span> <span class="s">&quot;true&quot;</span> <span class="p">;</span>
+        <span class="p">]</span>
+    <span class="p">].</span>
+</code></pre></div>
+<p>Then you can create a new graph db with the following command (replace "my_db" as needed):</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;admin:NewAdminPassword&quot;</span><span class="w"> </span>http://localhost:7200/repositories/my_db<span class="w"> </span>--data-binary<span class="w"> </span><span class="s2">&quot;@data-config.ttl&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/x-turtle&quot;</span>
+</code></pre></div>
+<p>and add give our user access permission to the new resource:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>--header<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;</span>
+<span class="s1">{&quot;grantedAuthorities&quot;: [&quot;WRITE_REPO_my_db&quot;,&quot;READ_REPO_my_db&quot;]}&#39;</span><span class="w">  </span>http://localhost:7200/rest/security/users/DBUSER<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;admin:NewAdminPassword&quot;</span>
+</code></pre></div>
+<ul>
+<li><code>"WRITE_REPO_my_db"</code>: Grants write permission.</li>
+<li><code>"READ_REPO_my_db"</code>: Grants read permission.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>make sure you replace <code>my_db</code> with the name of the graph db you 
+have just created. </p>
+</div>
+</div>
+</div>
+</div>
+<h2 id="uploading-data-to-the-graph">Uploading data to the graph</h2>
+<p>The <code>neurobagel/api</code> repo contains a helper script <a href="https://github.com/neurobagel/api/blob/main/add_data_to_graph.sh"><code>add_data_to_graph.sh</code></a> for automatically uploading all JSONLD files (i.e., graph-ready data) in a directory to a specific graph database, with the option to clear the existing data in the database first.
+Each <code>.jsonld</code> file is expected to correspond to a single <strong>dataset</strong>.</p>
+<p>To view all the command line arguments for add_data_to_graph.sh:
+<div class="highlight"><pre><span></span><code>./add_data_to_graph.sh<span class="w"> </span>--help
+</code></pre></div></p>
+<details class="info">
+<summary>If you prefer to directly use <code>curl</code> requests to modify the graph database instead of the helper script</summary>
+<p>Add a single dataset to the graph database (example)
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;&lt;USERNAME&gt;:&lt;PASSWORD&gt;&quot;</span><span class="w"> </span>-i<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:5820/&lt;DATABASE_NAME&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/ld+json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--data-binary<span class="w"> </span>@&lt;DATASET_NAME&gt;.jsonld
+</code></pre></div></p>
+<p>Clear all data in the graph database (example)
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;&lt;USERNAME&gt;:&lt;PASSWORD&gt;&quot;</span><span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:5820/&lt;DATABASE_NAME&gt;/update<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/sparql-update&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--data-binary<span class="w"> </span><span class="s2">&quot;DELETE { ?s ?p ?o } WHERE { ?s ?p ?o }&quot;</span>
+</code></pre></div></p>
+</details>
+<h3 id="uploading-example-neurobagel-data">Uploading example Neurobagel data</h3>
+<p>In order to test that the <a href="#setup-for-the-first-run">graph setup steps</a> worked correctly,
+we can add some example graph-ready data to the new graph database.</p>
+<p>First, clone the <a href="https://github.com/neurobagel/examples"><code>neurobagel_examples</code></a> repository:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/neurobagel/neurobagel_examples.git
+</code></pre></div>
+<p>Next, upload the <code>.jsonld</code> file in the directory <code>neurobagel_examples/data-upload/pheno-bids-output</code> to the database we created above, using <code>add_data_to_graph.sh</code>:</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Normally you would create the graph-ready files by first <a href="../annotation_tool">annotating
+the phenotypic information of a BIDS dataset</a> with the 
+Neurobagel annotator, and then <a href="../cli">parsing the annotated BIDS
+dataset</a> with the Neurobagel CLI.</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Stardog</label><label for="__tabbed_8_2">graphDB</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>./add_data_to_graph.sh<span class="w"> </span>PATH/TO/neurobagel_examples/data-upload/pheno-bids-output<span class="w"> </span><span class="se">\ </span>
+<span class="w">  </span>localhost:5820<span class="w"> </span>test_data<span class="w"> </span>DBUSER<span class="w"> </span>DBPASSWORD<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--clear-data
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>./add_data_to_graph.sh<span class="w"> </span>PATH/TO/neurobagel_examples/data-upload/pheno-bids-output<span class="w"> </span><span class="se">\ </span>
+<span class="w">  </span>localhost:7200<span class="w"> </span>repositories/my_db/statements<span class="w"> </span>DBUSER<span class="w"> </span>DBPASSWORD<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--clear-data
+</code></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Note:</strong> Here we added the <code>--clear-data</code> flag to remove any existing data in the database (if the database is empty, the flag has no effect).
+You can choose to omit the flag or explicitly specify <code>--no-clear-data</code> (default behaviour) to skip this step.</p>
+<h3 id="updating-a-dataset-in-the-graph-database">Updating a dataset in the graph database</h3>
+<p>If the raw data for a previously harmonized dataset (i.e., already has a corresponding JSONLD <em>which is in the graph</em>) has been updated, <a href="../updating_dataset/">a new JSONLD file must first be generated for that dataset</a>.
+To push the update to the corresponding graph database, our current recommended approach is to simply clear the database and re-upload all existing datasets, including the <strong>new</strong> JSONLD file for the updated dataset.</p>
+<p>To do this, rerun <code>add_data_to_graph.sh</code> on the directory containing the JSONLD files currently in the graph database, including the replaced JSONLD file for the dataset that has been updated.
+<strong>Make sure to include the <code>--clear-data</code> flag when running the script so that the database is cleared first.</strong></p>
+<h2 id="where-to-store-neurobagel-graph-ready-data">Where to store Neurobagel graph-ready data</h2>
+<p>To allow easy (re-)uploading of datasets when needed, we recommend having a shared directory in your data filesystem/server for storing Neurobagel graph-ready JSONLD files created for datasets at your institute or lab. 
+This directory can be called anything you like, but we recommend an explicit name such as <code>neurobagel_jsonld_datasets</code> to distinguish it from the actual raw data files or Neurobagel data dictionaries.
+Each <code>.jsonld</code> in the directory should include the name of the dataset in the filename.</p>
+<h2 id="test-the-new-deployment">Test the new deployment</h2>
+<p>You can run a test query against the API via a <code>curl</code> request in your terminal:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span><span class="s1">&#39;GET&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s1">&#39;http://localhost:8000/query/&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;accept: application/json&#39;</span>
+
+<span class="c1"># or</span>
+curl<span class="w"> </span>-L<span class="w"> </span>http://localhost:8000/query/
+</code></pre></div>
+<p>Or, you can directly use the interactive documentation of the API (provided by <a href="https://github.com/swagger-api/swagger-ui">Swagger UI</a>) 
+by navigating to <a href="http://localhost:8000/docs">http://localhost:8000/docs</a> in your browser. 
+To test the API from the docs interface, expand the <code>query</code> endpoint tab with the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg></span> icon to view the parameters that can be set, 
+and click "Try it out" and then "Execute" to execute a query.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For very large databases, requests to the API using the interactive docs UI may be very slow or time out. 
+If this prevents test queries from succeeding, try setting more parameters to enable an example response from the graph, or use a <code>curl</code> request instead.</p>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.expand", "content.tabs.link", "content.code.copy"], "search": "../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6eac0284.min.js"></script>
+      
+    
+  </body>
+</html>
